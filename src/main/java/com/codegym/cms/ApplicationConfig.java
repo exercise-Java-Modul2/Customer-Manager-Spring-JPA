@@ -1,9 +1,9 @@
 package com.codegym.cms;
 
 import com.codegym.cms.repository.CustomerRepository;
-        import com.codegym.cms.repository.CustomerRepositoryImpl;
+        import com.codegym.cms.repository.iplm.CustomerRepositoryImpl;
         import com.codegym.cms.service.CustomerService;
-        import com.codegym.cms.service.CustomerServiecImpl;
+        import com.codegym.cms.service.CustomerServiceImpl;
         import org.springframework.beans.BeansException;
         import org.springframework.beans.factory.annotation.Qualifier;
         import org.springframework.context.ApplicationContext;
@@ -51,7 +51,7 @@ public class ApplicationConfig implements ApplicationContextAware {
 
     @Bean
     public CustomerService customerService() {
-        return new CustomerServiecImpl();
+        return new CustomerServiceImpl();
     }
 
     @Bean
@@ -101,7 +101,7 @@ public class ApplicationConfig implements ApplicationContextAware {
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/cms");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/cms?useSSL=false");
         dataSource.setUsername("root");
         dataSource.setPassword("phantiensy");
         return dataSource;
